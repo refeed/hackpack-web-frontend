@@ -12,21 +12,21 @@ This tutorial includes code that uses a lot of ES6 (and updated version of JavaS
 
 To start, make sure you have git installed and clone this repository:
 
-```
+```sh
 git clone https://github.com/TreeHacks/hackpack-web-frontend
 ```
 If you haven't already, install Node.js by following the instructions [here](https://nodejs.org/en/download/package-manager/).
 
 Go into the folder you cloned your repository into and install the necessary packages:
 
-```
+```sh
 cd hackpack-web-frontend
 npm install
 ```
 
 This might take a while, but once it finishes, make sure you can run the app by running:
 
-```
+```sh
 npm run dev
 ```
 
@@ -46,7 +46,7 @@ For the journal interface, we'll need a sidebar and an editing interface compone
 
 In `src/app/components/journal/Sidebar.jsx`, replace the contents with:
 
-```
+```es6
 import React from 'react';
 import _ from 'lodash';
 import { Link } from 'react-router';
@@ -95,7 +95,7 @@ Here, we hard-code the variable `entries` and then iterate through them to displ
 
 Next, in `src/app/components/journal/EditEntry.jsx` change the contents to the following:
 
-```
+```es6
 import React from 'react';
 import _ from 'lodash';
 
@@ -128,7 +128,7 @@ This `textarea` will always display `Hello world` from the `entry` variable we d
 
 The default component to be displayed right now is `src/app/components/Journal.jsx`. In that file, we'll need to add the `Sidebar` and `EditEntry` to the `Journal` component so they'll be rendered when we open the website. in `Journal.jsx`, change it to the following:
 
-```
+```es6
 import React from 'react';
 import Sidebar from './Sidebar';
 import EditEntry from './EditEntry';
@@ -161,7 +161,7 @@ For this iteration of the website, we're going to support 3 actions:
 
 In `src/app/actions/actionTypes.js` add these:
 
-```
+```es6
 export const NEW_ENTRY = 'NEW_ENTRY';
 export const UPDATE_ENTRY = 'UPDATE_ENTRY';
 export const SELECT_ENTRY = 'SELECT_ENTRY';
@@ -171,7 +171,7 @@ We'll use these constants so we'll have a consistent action type name throughout
 
 In `src/app/actions/index.js` add the following:
 
-```
+```es6
 import * as actionTypes from './actionTypes';
 import lodash from 'lodash';
 import shortid from 'shortid';
@@ -257,7 +257,7 @@ Now that we've defined the actions, lets figure out how to use those actions and
 
 In `src/app/reducers/index.js` change it to the following:
 
-```
+```es6
 import { combineReducers } from 'redux';
 import * as actionTypes from '../actions/actionTypes';
 import lodash from 'lodash';
@@ -327,7 +327,7 @@ Now that the actions actually **do** things, lets start adding in data and actio
 
 Change `src/app/containers/Journal.jsx` to:
 
-```
+```es6
 import React from 'react';
 import { connect } from 'react-redux';
 import Journal from '../components/journal/Journal.jsx';
@@ -372,7 +372,7 @@ In this, we also pass in two functions: `mapStateToProps` and `mapDispatchToProp
 
 In `src/app/components/journal/Journal.jsx` update the `Journal` variable to:
 
-```
+```es6
 const Journal = ({
   entries,
   currentEntry,
@@ -399,7 +399,7 @@ Here, we get all of those `props` we just made in `JournalContainer` and give `S
 
 Now, lets use those `props`. In `src/app/components/journal/Sidebar.jsx`, change `Sidebar` to:
 
-```
+```es6
 const Sidebar = ({
   entries,
   newEntry,
@@ -435,7 +435,7 @@ const Sidebar = ({
 
 and your `EditEntry` component to:
 
-```
+```es6
 const EditEntry = ({
   entries,
   currentEntry,
